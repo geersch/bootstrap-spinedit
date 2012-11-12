@@ -26,7 +26,7 @@ $('#spinEdit').spinedit();
 </script>
 ```
 
-You can use the following additional options to modify the behaviour of the progressbar:
+You can use the following additional options to modify the behaviour of the spin edit control:
 
 * **minimum**: The minimum allowed value (default 0).
 * **maximum**: The maximum allowed value (default 100).
