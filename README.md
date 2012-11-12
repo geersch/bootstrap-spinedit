@@ -25,3 +25,73 @@ Basic usage:
 $('#spinEdit').spinedit();
 </script>
 ```
+
+You can use the following additional options to modify the behaviour of the progressbar:
+
+* **minimum**: The minimum allowed value (default 0).
+* **maximum**: The maximum allowed value (default 100).
+* **step**: The amount that control uses to increase or decrease its vaule (default 1).
+
+For example:
+
+```
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap-spinedit.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap-spinedit.css" />
+
+<input type="text" id="spinEdit" />
+
+<script type="text/javascript">
+$('#spinEdit').spinedit({
+  		minimum: -10000,
+			maximum: 10000,
+			step: 100
+		});
+</script>
+```
+
+## Methods
+
+**setMinimum**
+
+Set the minimum allowed value of the spin edit.
+
+```
+$('#spinEdit').('setMinimum', -10000);
+```
+
+**setMaximum**
+
+Set the maximum allowed value of the spin edit.
+
+```
+$('#spinEdit').('setMaximum', 10000);
+```
+
+**setStep**
+
+Set the step, by which the value of the spin edit is increased / decreased.
+
+```
+$('#spinEdit').('setStep', 100);
+```
+
+**increase**
+
+Increase the value of the spin edit with the value defined by its step property.
+
+```
+$('#spinEdit').('increase');
+```
+
+**decrease**
+
+Decrease the value of the spin edit with the value defined by its step property.
+
+```
+$('#spinEdit').('decrease');
+```
+
+## Events
