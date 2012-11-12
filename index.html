@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Bootstrap-spinedit : A spin edit control for Twitter Bootstrap" />
+    <meta name="description" content="bootstrap-spinedit : " />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css" />
 
-    <title>Bootstrap-spinedit</title>
+    <title>bootstrap-spinedit</title>
   </head>
 
   <body>
@@ -16,10 +16,10 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/geersch/bootstrap-spinedit">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/geersch/bootstrap-progressbar">View on GitHub</a>
 
-          <h1 id="project_title">Bootstrap-spinedit</h1>
-          <h2 id="project_tagline">A spin edit control for Twitter Bootstrap</h2>
+          <h1 id="project_title">bootstrap-spinedit</h1>
+          <h2 id="project_tagline"></h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/geersch/bootstrap-spinedit/zipball/master">Download this project as a .zip file</a>
@@ -31,44 +31,145 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Spin Edit for Twitter Bootstrap</h3>		
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+		<p>A spin edit control for Twitter Bootstrap.</p>		
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h3>Demo</h3>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<a href="demo.html" target="_blank">Click here for a live demo</a>.
 
-<h3>Designer Templates</h3>
+<h3>Usage</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>This component relies on <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> and <a href="http://jquery.com/" target="_blank">jQuery</a>.</p>
 
-<h3>Rather Drive Stick?</h3>
+<p>Basic usage:</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+<span class="kwrd">&lt;</span><span class="html">script</span> <span class="attr">type</span><span class="kwrd">="text/javascript"</span> <span class="attr">src</span><span class="kwrd">="jquery.js"</span><span class="kwrd">&gt;&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span>
+&lt;script type=<span class="str">"text/javascript"</span> src=<span class="str">"bootstrap.js"</span>&gt;&lt;/script&gt;
+&lt;script type=<span class="str">"text/javascript"</span> src=<span class="str">"bootstrap-spinedit.js"</span>&gt;&lt;/script&gt;
+&lt;link rel=<span class="str">"stylesheet"</span> type=<span class="str">"text/css"</span> href=<span class="str">"bootstrap.css"</span> /&gt;
+&lt;link rel=<span class="str">"stylesheet"</span> type=<span class="str">"text/css"</span> href=<span class="str">"bootstrap-spinedit.css"</span> /&gt;
 
-<h3>Authors and Contributors</h3>
+&lt;input type=<span class="str">"text"</span> id=<span class="str">"spinEdit"</span> /&gt;
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+&lt;script type=<span class="str">"text/javascript"</span>&gt;
+$(<span class="str">'#spinEdit'</span>).spinedit();
+<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+</div>
 
-<h3>Support or Contact</h3>
+<p>You can use the following additional options to modify the behaviour of the spin edit control:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+<ul>
+<li><strong>minimum</strong>: The minimum allowed value (default 0).</li>
+<li><strong>maximum</strong>: The maximum allowed value (default 100).</li>
+<li><strong>step</strong>: The amount that control uses to increase or decrease its vaule (default 1).</li>
+</ul>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Bootstrap-spinedit maintained by <a href="https://github.com/geersch">geersch</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+<p>For example:</p>
 
-    
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+<span class="kwrd">&lt;</span><span class="html">script</span> <span class="attr">type</span><span class="kwrd">="text/javascript"</span> <span class="attr">src</span><span class="kwrd">="jquery.js"</span><span class="kwrd">&gt;&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span>
+&lt;script type=<span class="str">"text/javascript"</span> src=<span class="str">"bootstrap.js"</span>&gt;&lt;/script&gt;
+&lt;script type=<span class="str">"text/javascript"</span> src=<span class="str">"bootstrap-spinedit.js"</span>&gt;&lt;/script&gt;
+&lt;link rel=<span class="str">"stylesheet"</span> type=<span class="str">"text/css"</span> href=<span class="str">"bootstrap.css"</span> /&gt;
+&lt;link rel=<span class="str">"stylesheet"</span> type=<span class="str">"text/css"</span> href=<span class="str">"bootstrap-spinedit.css"</span> /&gt;
+
+&lt;input type=<span class="str">"text"</span> id=<span class="str">"spinEdit"</span> /&gt;
+
+&lt;script type=<span class="str">"text/javascript"</span>&gt;
+$(<span class="str">'#spinEdit'</span>).spinedit({
+    minimum: -10000,
+    maximum: 10000,
+    step: 100
+});
+<span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
+</div>
+
+<h3>Methods</h3>
+
+<p><strong>setMinimum</strong></p>
+
+<p>Set the minimum allowed value of the spin edit.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('setMinimum', -10000);</pre>
+</div>
+
+<p><strong>setMaximum</strong></p>
+
+<p>Set the maximum allowed value of the spin edit.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('setMaximum', 10000);</pre>
+</div>
+
+<p><strong>setStep</strong></p>
+
+<p>Set the step, by which the value of the spin edit is increased / decreased.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('setStep', 100);</pre>
+</div>
+
+<p><strong>increase</strong></p>
+
+<p>Increase the value of the spin edit with the value defined by its step property.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('increase');</pre>
+</div>
+
+<p><strong>decrease</strong></p>
+
+<p>Decrease the value of the spin edit with the value defined by its step property.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('decrease');</pre>
+</div>
+
+<h3>Events</h3>
+
+<p>The spin edit supports one event, namely <strong>valueChanged</strong>. This event is triggered when its value changes.</p>
+
+<p>The event object has one additional property:</p>
+
+<ul>
+	<li><strong>value</strong>: The new value of the spin edit.</li>
+</ul>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+$('#spinEdit').on("valueChanged", function (e) {
+    console.log(e.value);
+});</pre>
+</div>
+
+	<h3>License</h3>
+
+	<p>This code is made available under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0, the same as Twitter Bootstrap.</a></p>
+
+	<h3>Contact</h3>
+
+	<p>Questions or suggestions? Mail me at <a href="mailto:geersch@gmail.com">geersch@gmail.com</a>.</p>
+
+	<p>Follow <a href="https://twitter.com/#!/cgeers" target="_blank">@cgeers</a> on Twitter.</p>
 
   </body>
 </html>
