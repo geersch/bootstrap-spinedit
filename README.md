@@ -45,10 +45,10 @@ For example:
 
 <script type="text/javascript">
 $('#spinEdit').spinedit({
-  		minimum: -10000,
-			maximum: 10000,
-			step: 100
-		});
+    minimum: -10000,
+    maximum: 10000,
+    step: 100
+});
 </script>
 ```
 
@@ -95,3 +95,20 @@ $('#spinEdit').('decrease');
 ```
 
 ## Events
+
+The spin edit supports one event, namely **valueChanged**. This event is triggered when its value changes.
+
+The event object has one additional property:
+
+* **value**: The new value of the spin edit.
+
+```
+$('#spinEdit').on("valueChanged", function (e) {
+    console.log(e.value);
+});
+```
+
+## License
+
+This code is made available under the [Apache License v2.0](http://www.apache.org/licenses/LICENSE-2.0), 
+the same as Twitter Bootstrap.
