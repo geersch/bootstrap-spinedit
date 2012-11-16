@@ -1,61 +1,74 @@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>SpinEdit Demo</title>
 	<link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-spinedit.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
 	<script type='text/javascript' src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script type='text/javascript' src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
-	<script type='text/javascript' src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.1.0.js"></script>
 	<script type='text/javascript' src="js/bootstrap-spinedit.js"></script>
 </head>
 
 <body>
 	<div class="container">
 	
-<h2>SpinEdit Demo</h2>
+    <h2>SpinEdit Demo</h2>
 
-<div>
-	<input type="text" id="spinEdit" />
-	<br /><br />
-	<strong>Methods</strong>
-	<br /><br />
-	<button type="button" class="btn btn-primary" data-bind="click: increase">+</button>
-	<span><strong>increase</strong></span>	
-	<br /><br />
+    <p>This demo pages shows the spinedit control used in the different Twitter Bootstrap form layouts.</p>
 
-	<button type="button" class="btn btn-primary" data-bind="click: decrease">-</button>
-	<span><strong>decrease</strong></span>
-</div>
+    <form class="example default">
+    <fieldset>
+        <legend>Legend</legend>
+        <label>Label name</label>
+        <input type="text" id="spinEdit1" class="aSpinEdit" />
+        <span class="help-block">Example block-level help text here.</span>
+        </fieldset>
+    </form>
+
+    <form class="form-search example search">
+    <fieldset>
+        <legend>Legend</legend>
+        <label>Label name</label>
+        <input type="text" id="spinEdit2" class="aSpinEdit" />
+        <button type="submit" class="btn">Search</button>
+        </fieldset>
+    </form>
+
+    <form class="form-inline example inline">
+      <input type="text" id="spinEdit3" class="aSpinEdit" />
+      <button type="submit" class="btn">Do Something</button>
+    </form>	   
+        
+   <form class="form-horizontal example horizontal">
+      <div class="control-group">
+        <label class="control-label" for="spinEdit4">Label name</label>
+        <div class="controls">
+            <input type="text" id="spinEdit4" class="aSpinEdit" />
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">Do Something</button>
+        </div>
+      </div>
+    </form>   	    
+    </div>
 
 <script type="text/javascript">
-
 	$(function () {
-		$('#spinEdit').spinedit({
+	    $('.aSpinEdit').spinedit({
 			minimum: -10,
 			maximum: 50,
 			step: 1
 		});
 
-		$('#spinEdit').on("valueChanged", function (e) {
+		$('.aSpinEdit').on("valueChanged", function (e) {
 			console.log(e.value);
 		});
-
-		ko.applyBindings(viewModel);
 	});
-
-	var viewModel = {
-		increase: function () {
-			$('#spinEdit').spinedit('increase');
-		},
-
-		decrease: function () {
-			$('#spinEdit').spinedit('decrease');
-		}
-	};
 </script>
-	</div>
+
 </body>
 </html>

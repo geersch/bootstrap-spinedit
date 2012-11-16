@@ -1,23 +1,12 @@
-﻿.spinedit {
-	display: inline-block;
-	width: 12px;
-	margin: 0 0 0 8px;
-}
+﻿div.spinedit { display: inline-block; position: relative; }
 
-input[type="text"].spinedit{
-	width: 35px;
-}
+input[type="text"].spinedit { width: 35px; }
 
-.spinedit .icon-chevron-up,
-.spinedit .icon-chevron-down {
-	position: relative;
-	cursor: pointer;
-}
+.icon-chevron-up,
+.icon-chevron-down { position: relative; cursor: pointer; width: 12px; left: 8px; }
 
-.spinedit .icon-chevron-up {
-	top: 8px;
-}
+.icon-chevron-up { top: -12px; }
 
-.spinedit .icon-chevron-down {
-	top: 2px;
-}
+.icon-chevron-down { top: 3px; left: -4px; }
+
+.form-search div.spinedit, .form-inline div.spinedit, .form-horizontal div.spinedit { top: 5px; }
