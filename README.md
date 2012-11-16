@@ -4,6 +4,8 @@
 
 A spin edit control for Twitter Bootstrap.
 
+Tested with version 2.2.1.
+
 ## Demo
 
 [Click here for a live demo](http://geersch.github.com/bootstrap-spinedit/demo.html).
