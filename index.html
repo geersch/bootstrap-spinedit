@@ -66,6 +66,7 @@ $(<span class="str">'#spinEdit'</span>).spinedit();
 <p>You can use the following additional options to modify the behaviour of the spin edit control:</p>
 
 <ul>
+<li><strong>value</strong>: The initial value (default 0).</li>
 <li><strong>minimum</strong>: The minimum allowed value (default 0).</li>
 <li><strong>maximum</strong>: The maximum allowed value (default 100).</li>
 <li><strong>step</strong>: The amount that control uses to increase or decrease its vaule (default 1).</li>
@@ -88,12 +89,23 @@ $(<span class="str">'#spinEdit'</span>).spinedit();
 $(<span class="str">'#spinEdit'</span>).spinedit({
     minimum: -10000,
     maximum: 10000,
-    step: 100
+    step: 100,
+    value: 0
 });
 <span class="kwrd">&lt;/</span><span class="html">script</span><span class="kwrd">&gt;</span></pre>
 </div>
 
 <h3>Methods</h3>
+
+<p><strong>setValue</strong></p>
+
+<p>Set the value of the spin edit.</p>
+
+<div class="csharpcode">
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre>
+$('#spinEdit').('setValue', 100);</pre>
+</div>
 
 <p><strong>setMinimum</strong></p>
 
