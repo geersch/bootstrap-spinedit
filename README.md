@@ -49,12 +49,21 @@ For example:
 $('#spinEdit').spinedit({
     minimum: -10000,
     maximum: 10000,
-    step: 100
+    step: 100,
+    value: 0
 });
 </script>
 ```
 
 ## Methods
+
+**setValue**
+
+Set the value of the spin edit.
+
+```
+$('#spinEdit').('setValue', 100);
+```
 
 **setMinimum**
 
