@@ -44,15 +44,13 @@ $(function () {
 
 !function ($) {
 
-	var SpinEdit = function (element, options) {
-		this.value = 0;
+	var SpinEdit = function (element, options) {		
 		this.element = $(element);
 		this.element.addClass("spinedit");
 		this.element.addClass("noSelect");
-		this.element.val(this.value);
 		this.intervalId = undefined;
 
-		var hasOptions = typeof options == 'object';
+		var hasOptions = typeof options == 'object';		
 
 		this.minimum = $.fn.spinedit.defaults.minimum;
 		if (hasOptions && typeof options.minimum == 'number') {
@@ -63,6 +61,12 @@ $(function () {
 		if (hasOptions && typeof options.maximum == 'number') {
 			this.setMaximum(options.maximum);
 		}
+
+		this.value = $.fn.spinedit.defaults.value;
+		if (hasOptions && typeof options.value == 'number') {
+		    this.setValue(options.value);
+		}
+		this.element.val(this.value);
 
 		this.step = $.fn.spinedit.defaults.step;
 		if (hasOptions && typeof options.step == 'number') {
@@ -92,6 +96,16 @@ $(function () {
 
 		setStep: function (value) {
 			this.step = parseInt(value);
+		},
+
+		setValue: function (value) {
+		    value = parseInt(value);
+		    if (value < this.minimum)
+		        value = this.minimum;
+		    if (value > this.maximum)
+		        value = this.maximum;
+		    this.value = value;
+		    this.element.val(this.value);
 		},
 
 		increase: function () {
@@ -169,6 +183,7 @@ $(function () {
 	};
 
 	$.fn.spinedit.defaults = {
+        value: 0,
 		minimum: 0,
 		maximum: 100,
 		step: 1
