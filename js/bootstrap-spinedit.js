@@ -62,11 +62,11 @@ $(function () {
             this.setMaximum(options.maximum);
         }
 
-        this.value = $.fn.spinedit.defaults.value;
+        var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
-            this.setValue(options.value);
-        }
-        this.element.val(this.value);
+            value = options.value;
+        } 
+        this.setValue(value);        
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -100,30 +100,30 @@ $(function () {
 
         setValue: function (value) {
             value = parseInt(value);
+            if (this.value == value)
+                return;
             if (value < this.minimum)
                 value = this.minimum;
             if (value > this.maximum)
                 value = this.maximum;
             this.value = value;
             this.element.val(this.value);
+            this.element.change();
+
+            this.element.trigger({
+                type: "valueChanged",
+                value: this.value
+            });
         },
 
         increase: function () {
-            if (this.value >= this.maximum)
-                return;
-
-            this.value += this.step;
-            this.element.val(this.value);
-            this._triggerValueChanged();
+            var newValue = this.value + this.step;
+            this.setValue(newValue);
         },
 
         decrease: function () {
-            if (this.value <= this.minimum)
-                return;
-
-            this.value -= this.step;
-            this.element.val(this.value);
-            this._triggerValueChanged();
+            var newValue = this.value - this.step;
+            this.setValue(newValue);
         },
 
         _keypress: function (event) {
@@ -131,7 +131,6 @@ $(function () {
             if (event.keyCode == 45) {
                 return;
             }
-
             // Ensure that it is a number and stop the keypress
             var a = [];
             for (var i = 48; i < 58; i++)
@@ -143,26 +142,7 @@ $(function () {
 
         _checkConstraints: function (e) {
             var target = $(e.target);
-            var value = parseInt(target.val());
-            if (this.value == value) {
-                return;
-            }
-
-            if (value <= this.minimum)
-                value = this.minimum;
-            if (value >= this.maximum)
-                value = this.maximum;
-
-            this.value = value;
-            this.element.val(this.value);
-            this._triggerValueChanged();
-        },
-
-        _triggerValueChanged: function () {
-            this.element.trigger({
-                type: "valueChanged",
-                value: this.value
-            });
+            this.setValue(target.val());
         }
     };
 
