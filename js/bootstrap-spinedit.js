@@ -79,7 +79,7 @@ $(function () {
 
         template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
         template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
-        this.element.on('keydown', $.proxy(this._keydown, this));
+        this.element.on('keypress', $.proxy(this._keypress, this));
         this.element.on('blur', $.proxy(this._checkConstraints, this));
     };
 
@@ -126,18 +126,19 @@ $(function () {
             this._triggerValueChanged();
         },
 
-        _keydown: function (event) {
-            // Allow: backspace, delete, tab, escape, enter, home, end, left, right, -
-            if (event.keyCode == 109 || event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
-			   (event.keyCode >= 35 && event.keyCode <= 39)) {
+        _keypress: function (event) {
+            // Allow: -
+            if (event.keyCode == 45) {
                 return;
             }
-            else {
-                // Ensure that it is a number and stop the keypress
-                if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
-                    event.preventDefault();
-                }
-            }
+
+            // Ensure that it is a number and stop the keypress
+            var a = [];
+            for (var i = 48; i < 58; i++)
+                a.push(i);
+            var k = event.keyCode;
+            if (!(a.indexOf(k) >= 0))
+                event.preventDefault();
         },
 
         _checkConstraints: function (e) {
