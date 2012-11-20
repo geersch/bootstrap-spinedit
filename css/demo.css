@@ -40,3 +40,7 @@
 .horizontal::after {
     content: "Horizontal form";
 }
+
+.decimals::after {
+    content: "Decimals";
+}
