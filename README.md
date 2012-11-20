@@ -36,6 +36,7 @@ You can use the following additional options to modify the behaviour of the spin
 * **minimum**: The minimum allowed value (default 0).
 * **maximum**: The maximum allowed value (default 100).
 * **step**: The amount that control uses to increase or decrease its vaule (default 1).
+* **numberOfDecimals**: The number of allowed decimals (default 0).
 
 For example:
 
@@ -53,7 +54,8 @@ $('#spinEdit').spinedit({
     minimum: -10000,
     maximum: 10000,
     step: 100,
-    value: 0
+    value: 0,
+    numberOfDecimals: 0
 });
 </script>
 ```
@@ -106,6 +108,14 @@ Decrease the value of the spin edit with the value defined by its step property.
 
 ```
 $('#spinEdit').('decrease');
+```
+
+**setNumberOfDecimals**
+
+Sets the number of allowed decimals.
+
+```
+$('#spinEdit').('setNumberOfDecimals', 2);
 ```
 
 ## Events
