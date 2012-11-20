@@ -62,11 +62,16 @@ $(function () {
             this.setMaximum(options.maximum);
         }
 
+        this.numberOfDecimals = $.fn.spinedit.defaults.numberOfDecimals;
+        if (hasOptions && typeof options.numberOfDecimals == 'number') {
+            this.setNumberOfDecimals(options.numberOfDecimals);
+        }
+
         var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        } 
-        this.setValue(value);        
+        }
+        this.setValue(value);
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -87,19 +92,23 @@ $(function () {
         constructor: SpinEdit,
 
         setMinimum: function (value) {
-            this.minimum = parseInt(value);
+            this.minimum = parseFloat(value);
         },
 
         setMaximum: function (value) {
-            this.maximum = parseInt(value);
+            this.maximum = parseFloat(value);
         },
 
         setStep: function (value) {
-            this.step = parseInt(value);
+            this.step = parseFloat(value);
+        },
+
+        setNumberOfDecimals: function (value) {
+            this.numberOfDecimals = parseInt(value);
         },
 
         setValue: function (value) {
-            value = parseInt(value);
+            value = parseFloat(value);
             if (this.value == value)
                 return;
             if (value < this.minimum)
@@ -107,7 +116,7 @@ $(function () {
             if (value > this.maximum)
                 value = this.maximum;
             this.value = value;
-            this.element.val(this.value);
+            this.element.val(this.value.toFixed(this.numberOfDecimals));
             this.element.change();
 
             this.element.trigger({
@@ -129,6 +138,10 @@ $(function () {
         _keypress: function (event) {
             // Allow: -
             if (event.keyCode == 45) {
+                return;
+            }
+            // Allow decimal separator (.)
+            if (this.numberOfDecimals > 0 && event.keyCode == 46) {
                 return;
             }
             // Ensure that it is a number and stop the keypress
@@ -167,7 +180,8 @@ $(function () {
         value: 0,
         minimum: 0,
         maximum: 100,
-        step: 1
+        step: 1,
+        numberOfDecimals: 0
     };
 
     $.fn.spinedit.Constructor = SpinEdit;
