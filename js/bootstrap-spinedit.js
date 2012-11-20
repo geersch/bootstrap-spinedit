@@ -121,7 +121,7 @@ $(function () {
 
             this.element.trigger({
                 type: "valueChanged",
-                value: this.value
+                value: parseFloat(this.value.toFixed(this.numberOfDecimals))
             });
         },
 
