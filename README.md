@@ -1,6 +1,7 @@
 # Spin Edit for Twitter Bootstrap
 
 ![Spin Edit Example](http://geersch.github.com/bootstrap-spinedit/images/spinedit.png)
+![Spin Edit Example](http://geersch.github.com/bootstrap-spinedit/images/spineditfloat.png)
 
 A spin edit control for Twitter Bootstrap.
 
