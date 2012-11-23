@@ -109,6 +109,8 @@ $(function () {
 
         setValue: function (value) {
             value = parseFloat(value);
+            if (isNaN(value))
+                value = this.minimum;
             if (this.value == value)
                 return;
             if (value < this.minimum)
