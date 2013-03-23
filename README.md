@@ -68,7 +68,7 @@ $('#spinEdit').spinedit({
 Set the value of the spin edit.
 
 ```
-$('#spinEdit').('setValue', 100);
+$('#spinEdit').spinedit('setValue', 100);
 ```
 
 **setMinimum**
@@ -76,7 +76,7 @@ $('#spinEdit').('setValue', 100);
 Set the minimum allowed value of the spin edit.
 
 ```
-$('#spinEdit').('setMinimum', -10000);
+$('#spinEdit').spinedit('setMinimum', -10000);
 ```
 
 **setMaximum**
@@ -84,7 +84,7 @@ $('#spinEdit').('setMinimum', -10000);
 Set the maximum allowed value of the spin edit.
 
 ```
-$('#spinEdit').('setMaximum', 10000);
+$('#spinEdit').spinedit('setMaximum', 10000);
 ```
 
 **setStep**
@@ -92,7 +92,7 @@ $('#spinEdit').('setMaximum', 10000);
 Set the step, by which the value of the spin edit is increased / decreased.
 
 ```
-$('#spinEdit').('setStep', 100);
+$('#spinEdit').spinedit('setStep', 100);
 ```
 
 **increase**
@@ -100,7 +100,7 @@ $('#spinEdit').('setStep', 100);
 Increase the value of the spin edit with the value defined by its step property.
 
 ```
-$('#spinEdit').('increase');
+$('#spinEdit').spinedit('increase');
 ```
 
 **decrease**
@@ -108,7 +108,7 @@ $('#spinEdit').('increase');
 Decrease the value of the spin edit with the value defined by its step property.
 
 ```
-$('#spinEdit').('decrease');
+$('#spinEdit').spinedit('decrease');
 ```
 
 **setNumberOfDecimals**
@@ -116,7 +116,7 @@ $('#spinEdit').('decrease');
 Sets the number of allowed decimals.
 
 ```
-$('#spinEdit').('setNumberOfDecimals', 2);
+$('#spinEdit').spinedit('setNumberOfDecimals', 2);
 ```
 
 ## Events
