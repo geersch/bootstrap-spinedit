@@ -59,13 +59,18 @@ $(function () {
         this.numberOfDecimals = $.fn.spinedit.defaults.numberOfDecimals;
         if (hasOptions && typeof options.numberOfDecimals == 'number') {
             this.setNumberOfDecimals(options.numberOfDecimals);
-        }
-
-        var value = $.fn.spinedit.defaults.value;
+        }        
+		
+		var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        }
-        this.setValue(value);
+        } else {			
+			if (this.element.val()) {
+				var initialValue = parseFloat(this.element.val());
+				if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);				
+			}
+		}		
+        this.setValue(value);		
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
