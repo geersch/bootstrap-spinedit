@@ -64,7 +64,12 @@ $(function () {
         var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        }
+        } else {			
+			if (this.element.val()) {
+				var initialValue = parseFloat(this.element.val());
+				if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);				
+			}
+		}		
         this.setValue(value);
 
         this.step = $.fn.spinedit.defaults.step;
