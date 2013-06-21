@@ -137,20 +137,23 @@ $(function () {
         },
 
         _keypress: function (event) {
+            
+            var pressedKey = event.keyCode || event.charCode;
+            
             // Allow: -
-            if (event.keyCode == 45) {
+            if (pressedKey == 45) {
                 return;
             }
             // Allow decimal separator (.)
-            if (this.numberOfDecimals > 0 && event.keyCode == 46) {
+            if (this.numberOfDecimals > 0 && pressedKey == 46) {
                 return;
             }
             // Ensure that it is a number and stop the keypress
             var a = [];
             for (var i = 48; i < 58; i++)
                 a.push(i);
-            var k = event.keyCode;
-            if (!(a.indexOf(k) >= 0))
+
+            if (!(a.indexOf(pressedKey) >= 0))
                 event.preventDefault();
         },
 
