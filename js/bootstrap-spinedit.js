@@ -28,13 +28,12 @@
     }
 };
 
-$(function () {
-    $.extend($.fn.disableTextSelect = function () {
-        return this.each(function () {
-            $(this).bind('selectstart click mousedown', function () { return false; });
-        });
+jQuery.fn.disableTextSelect = function () {
+    return this.each(function () {
+        alert("aa");
+        $(this).bind('selectstart click mousedown', function () { return false; });
     });
-});
+}
 
 !function ($) {
 
