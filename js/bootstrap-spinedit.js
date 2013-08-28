@@ -81,8 +81,8 @@ $(function () {
         this.element.after(template);
         template.disableTextSelect();
 
-        template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
-        template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
+        template.find('.glyphicon-chevron-up').mousehold($.proxy(this.increase, this));
+        template.find('.glyphicon-chevron-down').mousehold($.proxy(this.decrease, this));
         this.element.on('keypress', $.proxy(this._keypress, this));
         this.element.on('blur', $.proxy(this._checkConstraints, this));
     };
@@ -191,8 +191,8 @@ $(function () {
 
     DRPGlobal.template =
 	'<div class="spinedit">' +
-	'<i class="icon-chevron-up"></i>' +
-	'<i class="icon-chevron-down"></i>' +
+	'<i class="glyphicon glyphicon-chevron-up"></i>' +
+	'<i class="glyphicon glyphicon-chevron-down"></i>' +
 	'</div>';
 
 }(window.jQuery);
