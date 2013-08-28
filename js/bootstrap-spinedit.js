@@ -42,6 +42,7 @@ $(function () {
         this.element = $(element);
         this.element.addClass("spinedit");
         this.element.addClass("noSelect");
+        
         this.intervalId = undefined;
 
         var hasOptions = typeof options == 'object';
@@ -60,6 +61,10 @@ $(function () {
         if (hasOptions && typeof options.numberOfDecimals == 'number') {
             this.setNumberOfDecimals(options.numberOfDecimals);
         }        
+
+        // adapt the width of the textfield according to the character count
+        // if we have numberOfDecimals > 0, add 1 to the length by multiplicating with 10
+        this.element.css("width", 26 + 8 * (this.maximum.toString() + (this.numberOfDecimals > 0 ? (10 * this.numberOfDecimals):"").toString()).length);
 		
 		var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
