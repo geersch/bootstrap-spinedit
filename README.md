@@ -48,7 +48,15 @@ For example:
 <link rel="stylesheet" type="text/css" href="bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="bootstrap-spinedit.css" />
 
-<input type="text" id="spinEdit" />
+<div class="form-group">
+	<div class="row">
+		<div class="col-lg-4">
+		    <div class="input-group">
+				<input type="text" id="spinEdit" />
+			</div>
+		</div>
+	</div>
+</div>
 
 <script type="text/javascript">
 $('#spinEdit').spinedit({

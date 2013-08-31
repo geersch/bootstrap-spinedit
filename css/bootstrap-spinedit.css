@@ -1,7 +1,7 @@
-﻿div.spinedit { display: inline-block; position: relative; }
-input[type="text"].spinedit { width: 35px; }
+﻿div.spinedit { padding: 0 4px 0 4px; }
 div.spinedit .glyphicon-chevron-up,
-div.spinedit .glyphicon-chevron-down { position: relative; cursor: pointer; width: 12px; left: 4px; }
-div.spinedit .glyphicon-chevron-up { top: -8px; }
-div.spinedit .glyphicon-chevron-down { top: 7px; left: -9px; }
-.form-search div.spinedit, .form-inline div.spinedit, .form-horizontal div.spinedit { top: 5px; }
+div.spinedit .glyphicon-chevron-down { cursor: pointer; float: left; position: relative; }
+div.spinedit .glyphicon-chevron-up { top: -3px;  left: 0px; }
+div.spinedit .glyphicon-chevron-down { top: 0px;  left: -1px; }
+
+

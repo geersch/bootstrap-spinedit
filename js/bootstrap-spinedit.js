@@ -32,7 +32,6 @@
 
     var SpinEdit = function (element, options) {
         this.element = $(element);
-        this.element.addClass("spinedit");
         this.element.addClass("noSelect");
         
         this.intervalId = undefined;
@@ -54,10 +53,6 @@
             this.setNumberOfDecimals(options.numberOfDecimals);
         }        
 
-        // adapt the width of the textfield according to the character count
-        // if we have numberOfDecimals > 0, add 1 to the length by multiplicating with 10
-        this.element.css("width", 26 + 8 * (this.maximum.toString() + (this.numberOfDecimals > 0 ? (10 * this.numberOfDecimals):"").toString()).length);
-        
         var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
@@ -75,7 +70,11 @@
         }
 
         var template = $(DRPGlobal.template);
-        this.element.after(template);
+        if (this.element.next().hasClass('input-group-addon')) {
+            this.element.next().after(template);
+        } else {
+            this.element.after(template);
+        }
         $(template).each(function (i,x) {
             $(x).bind('selectstart click mousedown', function () { return false; });
         });
@@ -223,7 +222,7 @@
     var DRPGlobal = {};
 
     DRPGlobal.template =
-    '<div class="spinedit">' +
+    '<div class="input-group-addon spinedit">' +
     '<i class="glyphicon glyphicon-chevron-up"></i>' +
     '<i class="glyphicon glyphicon-chevron-down"></i>' +
     '</div>';
