@@ -168,6 +168,7 @@ $(function () {
 
             if (!data) {
                 $this.data('spinedit', new SpinEdit(this, $.extend({}, $.fn.spinedit().defaults, options)));
+				data = $this.data('spinedit');				
             }
             if (typeof option == 'string' && typeof data[option] == 'function') {
                 data[option].apply(data, args);
