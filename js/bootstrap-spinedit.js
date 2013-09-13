@@ -28,14 +28,6 @@
     }
 };
 
-$(function () {
-    $.extend($.fn.disableTextSelect = function () {
-        return this.each(function () {
-            $(this).bind('selectstart click mousedown', function () { return false; });
-        });
-    });
-});
-
 !function ($) {
 
     var SpinEdit = function (element, options) {
@@ -79,7 +71,9 @@ $(function () {
 
         var template = $(DRPGlobal.template);
         this.element.after(template);
-        template.disableTextSelect();
+	$(template).each(function (i,x) {
+            $(x).bind('selectstart click mousedown', function () { return false; });
+        });
 
         template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
         template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
@@ -137,20 +131,20 @@ $(function () {
         },
 
         _keypress: function (event) {
+            var key = event.keyCode || event.charCode;
             // Allow: -
-            if (event.keyCode == 45) {
+            if (key == 45) {
                 return;
             }
             // Allow decimal separator (.)
-            if (this.numberOfDecimals > 0 && event.keyCode == 46) {
+            if (this.numberOfDecimals > 0 && key == 46) {
                 return;
             }
             // Ensure that it is a number and stop the keypress
             var a = [];
             for (var i = 48; i < 58; i++)
                 a.push(i);
-            var k = event.keyCode;
-            if (!(a.indexOf(k) >= 0))
+            if (!(a.indexOf(key) >= 0))
                 event.preventDefault();
         },
 
