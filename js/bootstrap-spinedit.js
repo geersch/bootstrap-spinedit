@@ -75,8 +75,8 @@
             $(x).bind('selectstart click mousedown', function () { return false; });
         });
 
-        template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
-        template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
+        template.find('.glyphicon-chevron-up').mousehold($.proxy(this.increase, this));
+        template.find('.glyphicon-chevron-down').mousehold($.proxy(this.decrease, this));
         this.element.on('keypress', $.proxy(this._keypress, this));
         this.element.on('blur', $.proxy(this._checkConstraints, this));
     };
@@ -185,9 +185,9 @@
     var DRPGlobal = {};
 
     DRPGlobal.template =
-	'<div class="spinedit">' +
-	'<i class="icon-chevron-up"></i>' +
-	'<i class="icon-chevron-down"></i>' +
-	'</div>';
+    '<span class="spinedit">' +
+      '<span class="glyphicon glyphicon-chevron-down"></span>' +
+      '<span class="glyphicon glyphicon-chevron-up"></span>' +
+    '</span>';
 
 }(window.jQuery);
