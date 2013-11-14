@@ -32,8 +32,7 @@
 
     var SpinEdit = function (element, options) {
         this.element = $(element);
-        this.element.addClass("spinedit");
-        this.element.addClass("noSelect");
+        this.element.addClass("spinedit noSelect");
         this.intervalId = undefined;
 
         var hasOptions = typeof options == 'object';
@@ -61,8 +60,8 @@
 				var initialValue = parseFloat(this.element.val());
 				if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);				
 			}
-		}		
-        this.setValue(value);		
+		}
+        this.setValue(value);
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -81,13 +80,13 @@
 
         var template = $(DRPGlobal.template);
         this.element.after(template);
-	$(template).each(function (i,x) {
+		$(template).each(function (i,x) {
             $(x).bind('selectstart click mousedown', function () { return false; });
         });
 
         template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
         template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
-        this.element.on('keypress', $.proxy(this._keypress, this));
+        this.element.on('keyup', $.proxy(this._keypress, this));
         this.element.on('blur', $.proxy(this._checkConstraints, this));
     };
 
@@ -162,6 +161,14 @@
 
         _keypress: function (event) {
             var key = event.keyCode || event.charCode;
+            if (key == 40) {
+            	this.decrease();
+            	return
+            }
+            if (key == 38) {
+            	this.increase();
+            	return;
+            }
             // Allow: -
             if (key == 45) {
                 return;
