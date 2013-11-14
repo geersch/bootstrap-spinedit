@@ -74,6 +74,11 @@
             this.setLoop(options.loop);
         }
 
+        this.bind = $.fn.spinedit.defaults.bind;
+        if (hasOptions && options.bind != null && typeof options.bind != 'boolean') {
+            this.setBind(options.bind);
+        }
+
         var template = $(DRPGlobal.template);
         this.element.after(template);
 	$(template).each(function (i,x) {
@@ -109,17 +114,32 @@
             this.loop = value;
         },
 
+        setBind: function (value) {
+            if((typeof value === 'string' && $(value).length != 0) || value.length != 0) this.bind = $(value);
+            else this.bind = false;
+            if(this.bind.data('spinedit') == null) this.bind = false;
+        },
+
         setValue: function (value) {
             value = parseFloat(value);
-            console.log(value);
             if (isNaN(value))
                 value = this.minimum;
             if (this.value == value)
                 return;
-            if (value < this.minimum)
-                value = (this.loop ? this.maximum : this.minimum);
-            if (value > this.maximum)
-                value = (this.loop ? this.minimum : this.maximum);
+            if (value < this.minimum) {
+            	if(this.loop) {
+            		value = this.maximum;
+            		if(this.bind) this.bind.spinedit('decrease');
+            	}
+            	else value = this.minimum;
+            }
+            if (value > this.maximum) {
+            	if(this.loop) {
+            		value = this.minimum;
+            		if(this.bind) this.bind.spinedit('increase');
+            	}
+                else value = this.maximum;
+            }
             this.value = value;
             this.element.val(this.value.toFixed(this.numberOfDecimals));
             this.element.change();
@@ -188,7 +208,8 @@
         maximum: 100,
         step: 1,
         numberOfDecimals: 0,
-        loop: false
+        loop: false,
+        bind: false
     };
 
     $.fn.spinedit.Constructor = SpinEdit;
