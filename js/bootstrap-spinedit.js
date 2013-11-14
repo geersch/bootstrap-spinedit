@@ -69,6 +69,11 @@
             this.setStep(options.step);
         }
 
+        this.loop = $.fn.spinedit.defaults.loop;
+        if (hasOptions && typeof options.loop == 'boolean') {
+            this.setLoop(options.loop);
+        }
+
         var template = $(DRPGlobal.template);
         this.element.after(template);
 	$(template).each(function (i,x) {
@@ -100,16 +105,21 @@
             this.numberOfDecimals = parseInt(value);
         },
 
+        setLoop: function (value) {
+            this.loop = value;
+        },
+
         setValue: function (value) {
             value = parseFloat(value);
+            console.log(value);
             if (isNaN(value))
                 value = this.minimum;
             if (this.value == value)
                 return;
             if (value < this.minimum)
-                value = this.minimum;
+                value = (this.loop ? this.maximum : this.minimum);
             if (value > this.maximum)
-                value = this.maximum;
+                value = (this.loop ? this.minimum : this.maximum);
             this.value = value;
             this.element.val(this.value.toFixed(this.numberOfDecimals));
             this.element.change();
@@ -177,7 +187,8 @@
         minimum: 0,
         maximum: 100,
         step: 1,
-        numberOfDecimals: 0
+        numberOfDecimals: 0,
+        loop: false
     };
 
     $.fn.spinedit.Constructor = SpinEdit;
