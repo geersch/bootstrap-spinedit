@@ -1,3 +1,7 @@
+# Version
+
+This is Version **1.0.0**
+
 # Spin Edit for Twitter Bootstrap
 
 ![Spin Edit Example](https://raw.github.com/scyv/bootstrap-spinedit/bootstrap3/example.png)
