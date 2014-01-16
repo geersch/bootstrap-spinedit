@@ -1,4 +1,20 @@
-﻿div.spinedit { padding: 0 4px 0 4px; }
+﻿/**
+* Release:
+*  2014-01-16: Version 1.0.0
+*  
+*
+* https://github.com/scyv/bootstrap-spinedit
+*
+*
+* Author: 
+*   - geersch@gmail.com
+*
+* Contributors:
+*   - ivoras@gmail.com
+*   - yves.schubert@ksitec.de
+*/
+
+div.spinedit { padding: 0 4px 0 4px; }
 div.spinedit .glyphicon-chevron-up,
 div.spinedit .glyphicon-chevron-down { cursor: pointer; float: left; position: relative; }
 div.spinedit .glyphicon-chevron-up { top: -3px;  left: 0px; }

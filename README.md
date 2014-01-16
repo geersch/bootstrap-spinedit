@@ -1,14 +1,10 @@
-# Version
-
-This is Version **1.0.0**
-
-# Spin Edit for Twitter Bootstrap
+# Spin Edit for Twitter Bootstrap 3
 
 ![Spin Edit Example](https://raw.github.com/scyv/bootstrap-spinedit/bootstrap3/example.png)
 
-A spin edit control for Twitter Bootstrap.
+A spin edit control for Twitter Bootstrap 3.
 
-Tested with Bootstrap 3
+Tested with Bootstrap 3.0.1
 
 ## Usage
 

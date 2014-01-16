@@ -1,4 +1,20 @@
-﻿jQuery.fn.mousehold = function (f) {
+﻿/**
+* Release:
+*  2014-01-16: Version 1.0.0
+*  
+*
+* https://github.com/scyv/bootstrap-spinedit
+*
+*
+* Author: 
+*   - geersch@gmail.com
+*
+* Contributors:
+*   - ivoras@gmail.com
+*   - yves.schubert@ksitec.de
+*/
+
+jQuery.fn.mousehold = function (f) {
     var timeout = 100;
     if (f && typeof f == 'function') {
         var intervalId = 0;
