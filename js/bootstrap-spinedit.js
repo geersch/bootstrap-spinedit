@@ -32,8 +32,8 @@
 
     var SpinEdit = function (element, options) {
         this.element = $(element);
-        this.element.addClass("spinedit");
         this.element.addClass("noSelect");
+        
         this.intervalId = undefined;
 
         var hasOptions = typeof options == 'object';
@@ -52,17 +52,17 @@
         if (hasOptions && typeof options.numberOfDecimals == 'number') {
             this.setNumberOfDecimals(options.numberOfDecimals);
         }        
-		
-		var value = $.fn.spinedit.defaults.value;
+
+        var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        } else {			
-			if (this.element.val()) {
-				var initialValue = parseFloat(this.element.val());
-				if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);				
-			}
-		}		
-        this.setValue(value);		
+        } else {            
+            if (this.element.val()) {
+                var initialValue = parseFloat(this.element.val());
+                if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);              
+            }
+        }       
+        this.setValue(value);       
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -70,15 +70,20 @@
         }
 
         var template = $(DRPGlobal.template);
-        this.element.after(template);
-	$(template).each(function (i,x) {
+        if (this.element.next().hasClass('input-group-addon')) {
+            this.element.next().after(template);
+        } else {
+            this.element.after(template);
+        }
+        $(template).each(function (i,x) {
             $(x).bind('selectstart click mousedown', function () { return false; });
         });
-
-        template.find('.icon-chevron-up').mousehold($.proxy(this.increase, this));
-        template.find('.icon-chevron-down').mousehold($.proxy(this.decrease, this));
+        
+        template.find('.glyphicon-chevron-up').mousehold($.proxy(this.increase, this));
+        template.find('.glyphicon-chevron-down').mousehold($.proxy(this.decrease, this));
         this.element.on('keypress', $.proxy(this._keypress, this));
         this.element.on('blur', $.proxy(this._checkConstraints, this));
+
     };
 
     SpinEdit.prototype = {
@@ -99,7 +104,7 @@
         setNumberOfDecimals: function (value) {
             this.numberOfDecimals = parseInt(value);
         },
-
+        
         setValue: function (value) {
             value = parseFloat(value);
             if (isNaN(value))
@@ -121,31 +126,64 @@
         },
 
         increase: function () {
+            // the preceeding set is needed to allow clicking on chevron up
+            // while the cursor is within the textfield (the potentionally new 
+            // value has not been validated and set at this time yet)
+            this.setValue(this.element.val());
+            
             var newValue = this.value + this.step;
             this.setValue(newValue);
         },
 
         decrease: function () {
+            // the preceeding set is needed to allow clicking on chevron down
+            // while the cursor is within the textfield (the potentionally new 
+            // value has not been validated and set at this time yet)
+            this.setValue(this.element.val());
+
             var newValue = this.value - this.step;
             this.setValue(newValue);
         },
 
         _keypress: function (event) {
-            var key = event.keyCode || event.charCode;
+            
+            var pressedKey = event.keyCode || event.charCode;
+       
+            // Special feature for FF: increase on key up
+            if (pressedKey == 38) {
+                this.increase();
+                return;
+            }
+
+            // Special feature for FF: decrease on key up
+            if (pressedKey == 40) {
+                this.decrease();
+                return;
+            }
+
             // Allow: -
-            if (key == 45) {
+            if (pressedKey == 45) {
                 return;
             }
             // Allow decimal separator (.)
-            if (this.numberOfDecimals > 0 && key == 46) {
+            if (this.numberOfDecimals > 0 && pressedKey == 46) {
                 return;
             }
-            // Ensure that it is a number and stop the keypress
+
+            // Ensure that it is a number and stop the keypress if not
             var a = [];
-            for (var i = 48; i < 58; i++)
+            for (var i = 48; i < 58; i++) {
                 a.push(i);
-            if (!(a.indexOf(key) >= 0))
+            }
+
+            // for FF: allow left, right and backspace
+            a.push(37);
+            a.push(39);
+            a.push(8);
+            
+            if (!(a.indexOf(pressedKey) >= 0)) {
                 event.preventDefault();
+            }
         },
 
         _checkConstraints: function (e) {
@@ -159,8 +197,8 @@
         args.shift();
         return this.each(function () {
             var $this = $(this),
-				data = $this.data('spinedit'),
-				options = typeof option == 'object' && option;
+                data = $this.data('spinedit'),
+                options = typeof option == 'object' && option;
 
             if (!data) {
                 $this.data('spinedit', new SpinEdit(this, $.extend({}, $.fn.spinedit().defaults, options)));
@@ -184,9 +222,9 @@
     var DRPGlobal = {};
 
     DRPGlobal.template =
-	'<div class="spinedit">' +
-	'<i class="icon-chevron-up"></i>' +
-	'<i class="icon-chevron-down"></i>' +
-	'</div>';
+    '<div class="input-group-addon spinedit">' +
+    '<i class="glyphicon glyphicon-chevron-up"></i>' +
+    '<i class="glyphicon glyphicon-chevron-down"></i>' +
+    '</div>';
 
 }(window.jQuery);
