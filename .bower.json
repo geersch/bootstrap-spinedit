@@ -1,0 +1,13 @@
+{
+ "name": "bootstrap-spinedit",
+ "homepage": "https://github.com/wellingtonlorindo/bootstrap-spinedit",
+ "_release": "916dbec",
+ "_resolution": {
+   "type": "branch",
+   "branch": "master",
+   "commit": "916dbec4767ffd126ee6b3f3abb1c21be7797037"
+ },
+ "_source": "https://github.com/wellingtonlorindo/bootstrap-spinedit.git",
+ "_target": "*",
+ "_originalSource": "git://github.com/wellingtonlorindo/bootstrap-spinedit.git"
+}
