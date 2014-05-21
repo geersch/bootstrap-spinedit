@@ -137,7 +137,7 @@
                 return;
             }
             // Allow decimal separator (.)
-            if (this.numberOfDecimals > 0 && key == 46) {
+            if (this.numberOfDecimals > 0 && (key == 46 || key == 44)) {
                 return;
             }
             // Ensure that it is a number and stop the keypress
