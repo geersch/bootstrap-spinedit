@@ -5,7 +5,7 @@
  "_resolution": {
    "type": "branch",
    "branch": "master",
-   "commit": "916dbec4767ffd126ee6b3f3abb1c21be7797037"
+   "commit": "e5464d7a6bf0e4d5c1ef38659615e84493629b16"
  },
  "_source": "https://github.com/wellingtonlorindo/bootstrap-spinedit.git",
  "_target": "*",
