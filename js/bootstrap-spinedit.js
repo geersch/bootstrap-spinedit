@@ -52,17 +52,17 @@
         if (hasOptions && typeof options.numberOfDecimals == 'number') {
             this.setNumberOfDecimals(options.numberOfDecimals);
         }        
-		
-		var value = $.fn.spinedit.defaults.value;
+        
+        var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        } else {			
-			if (this.element.val()) {
-				var initialValue = parseFloat(this.element.val());
-				if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);				
-			}
-		}		
-        this.setValue(value);		
+        } else {            
+            if (this.element.val()) {
+                var initialValue = parseFloat(this.element.val());
+                if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);              
+            }
+        }       
+        this.setValue(value);       
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -71,7 +71,7 @@
 
         var template = $(DRPGlobal.template);
         this.element.after(template);
-	$(template).each(function (i,x) {
+    $(template).each(function (i,x) {
             $(x).bind('selectstart click mousedown', function () { return false; });
         });
 
@@ -101,6 +101,11 @@
         },
 
         setValue: function (value) {
+            console.log("setValue typeof value", typeof value, value);
+            if (typeof value == "string") {
+                value = value.replace(/,/,".");
+            }
+
             value = parseFloat(value);
             if (isNaN(value))
                 value = this.minimum;
@@ -111,22 +116,38 @@
             if (value > this.maximum)
                 value = this.maximum;
             this.value = value;
-            this.element.val(this.value.toFixed(this.numberOfDecimals));
+            var value2 = value.toFixed(this.numberOfDecimals).replace(/\./,",");
+            console.log("value2", typeof value2, value2);
+            this.element.val(value2);
             this.element.change();
 
-            this.element.trigger({
-                type: "valueChanged",
-                value: parseFloat(this.value.toFixed(this.numberOfDecimals))
-            });
+            // this.element.trigger({
+            //     type: "valueChanged",
+            //     value: (this.value).toLocaleString()
+            //     // value: parseFloat(this.value.toFixed(this.numberOfDecimals)).toLocaleString()
+            // });
         },
 
         increase: function () {
-            var newValue = this.value + this.step;
+            console.log("value increase", typeof this.value, this.value);
+
+            var value = this.value;
+            if( typeof this.value == "string") {
+                value = parseFloat(this.value.replace(",","."));
+            }
+
+            var newValue = value + this.step;
             this.setValue(newValue);
         },
 
         decrease: function () {
-            var newValue = this.value - this.step;
+            console.log("value decrease", typeof this.value, this.value);
+
+             var value = this.value;
+            if( typeof this.value == "string") {
+                value = parseFloat(this.value.replace(",","."));
+            }
+            var newValue = value - this.step;
             this.setValue(newValue);
         },
 
@@ -136,7 +157,7 @@
             if (key == 45) {
                 return;
             }
-            // Allow decimal separator (.)
+            // Allow decimal separator (. or ,)
             if (this.numberOfDecimals > 0 && (key == 46 || key == 44)) {
                 return;
             }
@@ -159,12 +180,12 @@
         args.shift();
         return this.each(function () {
             var $this = $(this),
-				data = $this.data('spinedit'),
-				options = typeof option == 'object' && option;
+                data = $this.data('spinedit'),
+                options = typeof option == 'object' && option;
 
             if (!data) {
                 $this.data('spinedit', new SpinEdit(this, $.extend({}, $.fn.spinedit().defaults, options)));
-				data = $this.data('spinedit');
+                data = $this.data('spinedit');
             }
             if (typeof option == 'string' && typeof data[option] == 'function') {
                 data[option].apply(data, args);
@@ -185,9 +206,9 @@
     var DRPGlobal = {};
 
     DRPGlobal.template =
-	'<div class="spinedit">' +
-	'<i class="icon-chevron-up"></i>' +
-	'<i class="icon-chevron-down"></i>' +
-	'</div>';
+    '<div class="spinedit">' +
+    '<i class="icon-chevron-up"></i>' +
+    '<i class="icon-chevron-down"></i>' +
+    '</div>';
 
 }(window.jQuery);
