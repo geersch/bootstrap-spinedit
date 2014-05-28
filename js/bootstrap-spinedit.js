@@ -101,7 +101,6 @@
         },
 
         setValue: function (value) {
-            console.log("setValue typeof value", typeof value, value);
             if (typeof value == "string") {
                 value = value.replace(/,/,".");
             }
@@ -117,7 +116,6 @@
                 value = this.maximum;
             this.value = value;
             var value2 = value.toFixed(this.numberOfDecimals).replace(/\./,",");
-            console.log("value2", typeof value2, value2);
             this.element.val(value2);
             this.element.change();
 
@@ -129,7 +127,6 @@
         },
 
         increase: function () {
-            console.log("value increase", typeof this.value, this.value);
 
             var value = this.value;
             if( typeof this.value == "string") {
