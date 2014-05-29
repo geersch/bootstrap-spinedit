@@ -114,9 +114,9 @@
                 value = this.minimum;
             if (value > this.maximum)
                 value = this.maximum;
-            this.value = value;
-            var value2 = value.toFixed(this.numberOfDecimals).replace(/\./,",");
-            this.element.val(value2);
+             // this.value = value;
+            this.value = value.toFixed(this.numberOfDecimals).replace(/\./,",");
+            this.element.val(this.value);
             this.element.change();
 
             // this.element.trigger({
