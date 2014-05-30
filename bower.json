@@ -1,13 +1,30 @@
 {
- "name": "bootstrap-spinedit",
- "homepage": "https://github.com/wellingtonlorindo/bootstrap-spinedit",
- "_release": "916dbec",
- "_resolution": {
-   "type": "branch",
-   "branch": "master",
-   "commit": "*"
- },
- "_source": "https://github.com/wellingtonlorindo/bootstrap-spinedit.git",
- "_target": "*",
- "_originalSource": "git://github.com/wellingtonlorindo/bootstrap-spinedit.git"
+  "name": "bootstrap-touchedit-uai",
+  "homepage": "https://github.com/mayconvm/bootstrap-touchspin",
+  "_release": "916dbec",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "916dbec4767ffd126ee6b3f3abb1c21be7797037"
+  },
+  "_source": "https://github.com/wellingtonlorindo/bootstrap-spinedit.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/wellingtonlorindo/bootstrap-spinedit.git",
+  "version": "3.1.0",
+  "authors": [
+    "Maycon Vinicius <maycon.vinicius@uaiti.com.br>"
+  ],
+  "description": "plugin touch spinner",
+  "keywords": [
+    "bootstrap",
+    "bootstrap-touchspinner"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
