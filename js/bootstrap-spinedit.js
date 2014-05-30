@@ -51,18 +51,18 @@
         this.numberOfDecimals = $.fn.spinedit.defaults.numberOfDecimals;
         if (hasOptions && typeof options.numberOfDecimals == 'number') {
             this.setNumberOfDecimals(options.numberOfDecimals);
-        }        
-        
+        }
+
         var value = $.fn.spinedit.defaults.value;
         if (hasOptions && typeof options.value == 'number') {
             value = options.value;
-        } else {            
+        } else {
             if (this.element.val()) {
                 var initialValue = parseFloat(this.element.val());
-                if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);              
+                if (!isNaN(initialValue)) value = initialValue.toFixed(this.numberOfDecimals);
             }
-        }       
-        this.setValue(value);       
+        }
+        this.setValue(value);
 
         this.step = $.fn.spinedit.defaults.step;
         if (hasOptions && typeof options.step == 'number') {
@@ -119,11 +119,11 @@
             this.element.val(this.value);
             this.element.change();
 
-            // this.element.trigger({
-            //     type: "valueChanged",
-            //     value: (this.value).toLocaleString()
-            //     // value: parseFloat(this.value.toFixed(this.numberOfDecimals)).toLocaleString()
-            // });
+            this.element.trigger({
+                type: "valueChanged",
+                value: (this.value).toLocaleString()
+                // value: parseFloat(this.value.toFixed(this.numberOfDecimals)).toLocaleString()
+            });
         },
 
         increase: function () {
@@ -138,8 +138,6 @@
         },
 
         decrease: function () {
-            console.log("value decrease", typeof this.value, this.value);
-
              var value = this.value;
             if( typeof this.value == "string") {
                 value = parseFloat(this.value.replace(",","."));
