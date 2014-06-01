@@ -1,0 +1,23 @@
+{
+    "name": "zardo/bootstrap-spinedit",
+    "type": "library",
+    "description": "A spin edit control for Twitter Bootstrap.",
+    "keywords": ["spin", "css", "bootstrap", "javascript"],
+    "homepage": "http://geersch.github.io/bootstrap-spinedit/",
+    "require": {},
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Christophe Geers",
+            "email": "geersch@gmail.com",
+            "homepage": "http://cgeers.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Lucas Zardo",
+            "email": "lucas@deliverymuch.com.br",
+            "homepage": "https://deliverymuch.com.br",
+            "role": "Packagist Editor"
+        }
+    ]
+}
