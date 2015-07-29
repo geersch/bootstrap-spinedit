@@ -132,6 +132,10 @@
 
         _keypress: function (event) {
             var key = event.keyCode || event.charCode;
+            // Allow: backspace & delete
+            if (key === 8 || key === 46) {
+                return;
+            }
             // Allow: -
             if (key == 45) {
                 return;
