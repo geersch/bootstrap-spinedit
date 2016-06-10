@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slventures/bootstrap-spinedit.git"
+    "url": "git+https://github.com/geersch/bootstrap-spinedit"
   },
   "author": "geersch",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/slventures/bootstrap-spinedit/issues"
+    "url": "https://github.com/geersch/bootstrap-spinedit/issues"
   },
-  "homepage": "https://github.com/slventures/bootstrap-spinedit#readme"
+  "homepage": "https://github.com/geersch/bootstrap-spinedit#readme"
 }
