@@ -1,7 +1,7 @@
 # Spin Edit for Twitter Bootstrap
 
-![Spin Edit Example](http://geersch.github.com/bootstrap-spinedit/images/spinedit.png)
-![Spin Edit Example](http://geersch.github.com/bootstrap-spinedit/images/spineditfloat.png)
+![Spin Edit Example](http://geersch.github.io/bootstrap-spinedit/images/spinedit.png)
+![Spin Edit Example](http://geersch.github.io/bootstrap-spinedit/images/spineditfloat.png)
 
 A spin edit control for Twitter Bootstrap.
 
@@ -9,11 +9,11 @@ Tested with version 2.2.1.
 
 ## Demo
 
-[Click here for a live demo](http://geersch.github.com/bootstrap-spinedit/demo.html).
+[Click here for a live demo](http://geersch.github.io/bootstrap-spinedit/demo.html).
 
 ## Usage
 
-This component relies on [Twitter Bootstrap](http://twitter.github.com/bootstrap/) and [jQuery](http://jquery.com/).
+This component relies on [Twitter Bootstrap](http://twitter.github.io/bootstrap/) and [jQuery](http://jquery.com/).
 
 Basic usage:
 
@@ -33,11 +33,11 @@ $('#spinEdit').spinedit();
 
 You can use the following additional options to modify the behaviour of the spin edit control:
 
-* **value**: The initial value (default 0).
-* **minimum**: The minimum allowed value (default 0).
-* **maximum**: The maximum allowed value (default 100).
-* **step**: The amount that control uses to increase or decrease its vaule (default 1).
-* **numberOfDecimals**: The number of allowed decimals (default 0).
+- **value**: The initial value (default 0).
+- **minimum**: The minimum allowed value (default 0).
+- **maximum**: The maximum allowed value (default 100).
+- **step**: The amount that control uses to increase or decrease its vaule (default 1).
+- **numberOfDecimals**: The number of allowed decimals (default 0).
 
 For example:
 
@@ -125,7 +125,7 @@ The spin edit supports one event, namely **valueChanged**. This event is trigger
 
 The event object has one additional property:
 
-* **value**: The new value of the spin edit.
+- **value**: The new value of the spin edit.
 
 ```
 $('#spinEdit').on("valueChanged", function (e) {
@@ -135,5 +135,5 @@ $('#spinEdit').on("valueChanged", function (e) {
 
 ## License
 
-This code is made available under the [Apache License v2.0](http://www.apache.org/licenses/LICENSE-2.0), 
+This code is made available under the [Apache License v2.0](http://www.apache.org/licenses/LICENSE-2.0),
 the same as Twitter Bootstrap.
